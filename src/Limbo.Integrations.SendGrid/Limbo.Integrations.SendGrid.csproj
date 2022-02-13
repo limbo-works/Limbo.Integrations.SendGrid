@@ -11,7 +11,7 @@
     <Product>Limbo.Integrations</Product>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © 2022</Copyright>
-    <Description>.NET wrapper for the SendGrid API</Description>
+    <Description>.NET wrapper for the SendGrid API.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
