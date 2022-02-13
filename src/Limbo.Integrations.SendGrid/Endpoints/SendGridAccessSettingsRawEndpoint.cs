@@ -1,5 +1,6 @@
 ﻿using System;
 using Limbo.Integrations.SendGrid.Http;
+using Limbo.Integrations.SendGrid.Options.AccessSettings;
 using Skybrud.Essentials.Http;
 
 namespace Limbo.Integrations.SendGrid.Endpoints {
@@ -53,6 +54,42 @@ namespace Limbo.Integrations.SendGrid.Endpoints {
         /// </see>
         public IHttpResponse GetWhitelist() {
             return Client.Get("/v3/access_settings/whitelist");
+        }
+
+        /// <summary>
+        /// Returns a list of recent access attempts.
+        /// </summary>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response from the API.</returns>
+        /// <see>
+        ///     <cref>https://docs.sendgrid.com/api-reference/ip-access-management/retrieve-all-recent-access-attempts</cref>
+        /// </see>
+        public IHttpResponse GetRecentAccessAttempts() {
+            return GetRecentAccessAttempts(new SendGridGetAccessAttemptListOptions());
+        }
+
+        /// <summary>
+        /// Returns a list of recent access attempts.
+        /// </summary>
+        /// <param name="limit">The maximum amount of access attempts to be returned.</param>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response from the API.</returns>
+        /// <see>
+        ///     <cref>https://docs.sendgrid.com/api-reference/ip-access-management/retrieve-all-recent-access-attempts</cref>
+        /// </see>
+        public IHttpResponse GetRecentAccessAttempts(int limit) {
+            return GetRecentAccessAttempts(new SendGridGetAccessAttemptListOptions(limit));
+        }
+
+        /// <summary>
+        /// Returns a list of recent access attempts.
+        /// </summary>
+        /// <param name="options">The options for the request to the API.</param>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response from the API.</returns>
+        /// <see>
+        ///     <cref>https://docs.sendgrid.com/api-reference/ip-access-management/retrieve-all-recent-access-attempts</cref>
+        /// </see>
+        public IHttpResponse GetRecentAccessAttempts(SendGridGetAccessAttemptListOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            return Client.GetResponse(options);
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using Limbo.Integrations.SendGrid.Responses.AccessSettings;
+﻿using Limbo.Integrations.SendGrid.Options.AccessSettings;
+using Limbo.Integrations.SendGrid.Responses.AccessSettings;
 
 namespace Limbo.Integrations.SendGrid.Endpoints {
 
@@ -56,6 +57,41 @@ namespace Limbo.Integrations.SendGrid.Endpoints {
         /// </see>
         public SendGridWhitelistResponse GetWhitelist() {
             return new(Raw.GetWhitelist());
+        }
+
+        /// <summary>
+        /// Returns a list of recent access attempts.
+        /// </summary>
+        /// <returns>An instance of <see cref="SendGridAccessAttemptListResponse"/> representing the response from the API.</returns>
+        /// <see>
+        ///     <cref>https://docs.sendgrid.com/api-reference/ip-access-management/retrieve-all-recent-access-attempts</cref>
+        /// </see>
+        public SendGridAccessAttemptListResponse GetRecentAccessAttempts() {
+            return new(Raw.GetRecentAccessAttempts());
+        }
+
+        /// <summary>
+        /// Returns a list of recent access attempts.
+        /// </summary>
+        /// <param name="limit">The maximum amount of access attempts to be returned.</param>
+        /// <returns>An instance of <see cref="SendGridAccessAttemptListResponse"/> representing the response from the API.</returns>
+        /// <see>
+        ///     <cref>https://docs.sendgrid.com/api-reference/ip-access-management/retrieve-all-recent-access-attempts</cref>
+        /// </see>
+        public SendGridAccessAttemptListResponse GetRecentAccessAttempts(int limit) {
+            return new(Raw.GetRecentAccessAttempts(limit));
+        }
+
+        /// <summary>
+        /// Returns a list of recent access attempts.
+        /// </summary>
+        /// <param name="options">The options for the request to the API.</param>
+        /// <returns>An instance of <see cref="SendGridAccessAttemptListResponse"/> representing the response from the API.</returns>
+        /// <see>
+        ///     <cref>https://docs.sendgrid.com/api-reference/ip-access-management/retrieve-all-recent-access-attempts</cref>
+        /// </see>
+        public SendGridAccessAttemptListResponse GetRecentAccessAttempts(SendGridGetAccessAttemptListOptions options) {
+            return new(Raw.GetRecentAccessAttempts(options));
         }
 
         #endregion
