@@ -1,6 +1,8 @@
 # Limbo.Integrations.SendGrid
 
-.NET wrapper for the SendGrid API.
+`Limbo.Integrations.SendGrid` is a .NET wrapper for the [SendGrid v3 REST API](https://docs.sendgrid.com/for-developers/sending-email/api-getting-started).
+
+The implementation of this package currently focuses on the administration part of a SendGrid API, and not sending emails. For the latter, have a look at SendGrid's own [sendgrid-csharp](https://github.com/sendgrid/sendgrid-csharp).
 
 ## Installation
 
@@ -39,7 +41,7 @@ The `SendGridHttpService` is the entry class for accessing the SendGrid API. Acc
 
 
 
-## Request a list of all API keys
+## Requesting a list of all API keys
 
 It's recommended to set up one or more API keys to access your SendGrid account. You can get a list of all existing API keys of the authenticated user like in the example below.
 
@@ -77,7 +79,7 @@ Notice that the API doesn't return the actual API key, but only the ID and name 
 
 
 
-## Request a specific API key
+## Requesting a specific API key
 
 With the ID of a given API key, you can also request information about the API key specifically. When doing so, the returned `SendGridApiKey` will also contain a list of the scopes granted to the API key (`SendGridApiKeyItem` in the list based response doesn't have this information).
 
@@ -109,7 +111,7 @@ With the ID of a given API key, you can also request information about the API k
 
 
 
-## Request a list of allowed IP addresses
+## Requesting a list of allowed IP addresses
 
 You may set up your SendGrid account to require IP adresses to be allow before they can access the account. When enabled, you can add new IP addresses to your accounts allow list (generally referred to as whitelist at the API level), and subsequently request a list of allowed IP addresses like in the example below:
 
@@ -145,7 +147,7 @@ You may set up your SendGrid account to require IP adresses to be allow before t
 
 
 
-## Request a list of recent access attempts
+## Requesting a list of recent access attempts
 
 ```cshtml
 @using Limbo.Integrations.SendGrid
